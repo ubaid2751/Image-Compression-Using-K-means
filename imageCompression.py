@@ -4,11 +4,9 @@ from skimage.transform import resize
 from skimage.color import rgba2rgb
 from Kmeans import *
 import sys
-import os
 
 def load_and_resize_image(image):
     try:
-        # original_img = plt.imread(image)
         if image.shape[-1] == 4:
             image = rgba2rgb(image)
         resized_img = resize(image, (256, 256), anti_aliasing=True)
@@ -56,15 +54,3 @@ def show_compressed_image(resized_img, X_recovered, K):
     
 def save_compressed_image(image, output_path):
     plt.imsave(output_path, image)
-    
-# path = input("Enter image: ")
-# image = load_and_resize_image(path)
-# new_image = to_compress(image)
-# show_compressed_image(image, new_image, 16)
-
-# new_image = resize(new_image, image.shape, anti_aliasing=True)
-
-# script_dir = os.path.dirname(os.path.abspath(__file__))
-# output_path = os.path.join(script_dir, "compressed_image.jpg")
-# save_compressed_image(new_image, output_path)
-# print(f"Compressed image saved to {output_path}")
